@@ -12,7 +12,7 @@ Welcome to my project! This web-based application safeguards your Gmail inbox fr
 
 - Email Listing: Displays emails with pagination, showing sender, subject, date, and content preview.
 
-### Phishing Detection:
+ #### Phishing Detection:
 
 - Custom-trained BERT model (87.1% accuracy) analyzes email content for phishing patterns.
 
