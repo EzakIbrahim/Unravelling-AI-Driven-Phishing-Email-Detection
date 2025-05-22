@@ -37,9 +37,11 @@ Inbox View: Emails are fetched via IMAP and displayed in a paginated interface, 
 
 ### Email Analysis:
 
-View Email: Open an email to see its full content.
+ #### View Email: Open an email to see its full content.
 
-Scan Email: Triggers a multi-layered analysis:
+ #### Scan Email: 
+
+Triggers a multi-layered analysis:
 
 Text Analysis: The BERT model evaluates the email body for phishing indicators.
 
