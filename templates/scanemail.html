@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Scan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='scanemail_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='loading.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+
+            <div class="email-id-container">
+                <span class="email-id-label">Email ID:</span>
+                <div class="email-id">{{ email_id }}</div>
+            </div>
+
+            <div class="email-sender-container">
+                <span class="email-sender-label">From:</span>
+                <div class="email-sender">{{ email_from }}</div>
+            </div>
+
+            <div class="email-subject-container">
+                <span class="email-subject-label">Subject:</span>
+                <div class="email-subject">{{ email_subject }}</div>
+            </div>
+
+            <div class="scan-result-container">
+                <img id="scan-result-image" src="" alt="Scan Result Image" style="display: none;">
+                <div class="boxes">
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="scan-result-label" id="scan-result">Scanning...</div>
+            </div>
+
+            <form method="GET" action="{{ url_for('display_emails', page=current_page) }}" style="display: inline;">
+                <button type="submit" class="boton-elegante Back">Back</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            fetch('/get_scan_result/{{ email_id }}')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch scan result');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const resultLabel = document.getElementById('scan-result');
+                    const resultImage = document.getElementById('scan-result-image');
+                    const boxes = document.querySelector('.boxes');
+                    boxes.style.display = 'none'; // Hide loading animation
+                    resultLabel.textContent = data.result;
+
+                    // Set the appropriate image based on the scan result
+                    if (data.result.toLowerCase() === "safe") {
+                        resultImage.src = "{{ url_for('static', filename='savewarning.png') }}";
+                        resultLabel.style.animation = 'normal 4s infinite ease-in-out';
+                    } else if (data.result.toLowerCase().startsWith("suspicious")) {
+                        resultImage.src = "{{ url_for('static', filename='Suspiciouswarning.png') }}";
+                        resultLabel.style.animation = 'phishing 4s infinite ease-in-out';
+                    } else if (data.result.toLowerCase() === "phishing email") {
+                        resultImage.src = "{{ url_for('static', filename='phishingwarning.png') }}";
+                        resultLabel.style.animation = 'phishing 4s infinite ease-in-out';
+                    }
+                    resultImage.style.display = 'block'; // Show the image
+                    console.log(data.result); // Print result to console
+                })
+                .catch(error => {
+                    const resultLabel = document.getElementById('scan-result');
+                    const boxes = document.querySelector('.boxes');
+                    boxes.style.display = 'none';
+                    resultLabel.textContent = 'Error fetching scan result';
+                    console.error(error);
+                });
+        }, 2000); // 2-second delay
+    </script>
+<script>
+    // Periodically ping the keep_alive endpoint to maintain session
+    setInterval(() => {
+        fetch('/keep_alive')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.log('Session expired, redirecting to login...');
+                    window.location.href = '/';
+                } else {
+                    console.log('Session kept alive');
+                }
+            })
+            .catch(error => {
+                console.error('Error pinging keep_alive:', error);
+            });
+    }, 100000); // Ping every 5 minutes (300,000 ms)
+</script>
+</html>

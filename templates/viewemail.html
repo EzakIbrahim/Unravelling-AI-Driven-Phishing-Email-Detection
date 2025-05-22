@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email View</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='viewemail_styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="email-sender-container">
+                <span class="email-sender-label">From:</span>
+                <div class="email-sender">{{ email.from }}</div>
+            </div>
+            <div class="email-date-container">
+                <span class="email-date-label">Date:</span>
+                <div class="email-date">{{ email.date }}</div>
+            </div>
+            <div class="email-subject-container">
+                <span class="email-subject-label">Subject:</span>
+                <div class="email-subject">{{ email.subject }}</div>
+            </div>
+            <div class="email-content-container">
+                <span class="email-content-label">Content:</span>
+                <div class="email-content">{{ email.content | safe }}</div>
+            </div>
+            <form method="GET" action="/scanemail/{{ email.uid }}" style="display: inline; margin-right: 10px;">
+                <input type="hidden" name="action" value="Analyse">
+                <button type="submit" class="boton-elegante Analyse">Analyse</button>
+            </form>
+            <form method="GET" action="{{ url_for('display_emails', page=current_page) }}" style="display: inline;">
+                <button type="submit" class="boton-elegante Back">Back</button>
+            </form>
+            <div class="spinner">
+                <div class="spinner-logo"></div>
+            </div>
+            <div class="warning-container">
+                <span class="warning">Opening any links before scanning the email is not recommended.</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

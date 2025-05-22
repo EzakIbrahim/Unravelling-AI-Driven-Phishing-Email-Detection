@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    </div>
+    <div class="container">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Login Page</title>
+            <link rel="stylesheet" href="{{ url_for('static', filename='index_styles.css') }}">
+            <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+        </head>
+        <body>
+            <div class="login-box">
+                <p>Login</p>
+                <form action="{{ url_for('login') }}" method="POST">
+                    <div class="user-box">
+                        <input type="email" name="Email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="user-box">
+                        <input type="password" name="APP_PASSWORD" required>
+                        <label>App password</label>
+                    </div>
+                    <button type="submit">login</button>
+                </form>
+                {% if error %}
+                <p style="color: red;">{{ error }}</p>
+                {% endif %}
+                <p>Don't know how to get appkey? <a href="https://support.google.com/mail/answer/185833?hl=en" class="a2">Tutorial!</a></p>
+            </div>
+    </div>
+</body>
+</html>
