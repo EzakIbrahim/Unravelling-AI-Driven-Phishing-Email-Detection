@@ -1,0 +1,322 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #0D0D0D; /* Matches the dark theme */
+    font-family: "Arial", sans-serif;
+}
+
+.logo-container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.logo-container img {
+    width: 150px;
+    height: auto;
+}
+
+.container {
+    position: relative; /* Ensures absolute positioning inside */
+    width: 100vw;
+    height: 100vh;
+    background: #000000;
+    --gap: 5em;
+    --line: 1px;
+    --color: rgba(255, 255, 255, 0.2);
+    
+    background-image: linear-gradient(
+        -90deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+    ),
+    linear-gradient(
+        0deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+    );
+    background-size: var(--gap) var(--gap);
+}
+
+/* ###################### SIDE BAR ######################  */
+@keyframes glowEffect {
+    0% {
+        filter: drop-shadow(0px 0px 5px #3b5db9);
+    }
+    50% {
+        filter: drop-shadow(0px 0px 20px #1E3A8A);
+    }
+    100% {
+        filter: drop-shadow(0px 0px 5px #2563EB);
+    }
+}
+
+.Side_card img {
+    width: 100%; /* Ensure it scales properly */
+    animation: glowEffect 4s infinite ease-in-out;
+    position: center; /* or fixed, depending on your layout needs */
+    top: 20px;  /* Adjust for spacing from the bottom */
+    right: 20px;   /* Positions it on the left side */
+}
+
+.Side_card {
+    position: absolute; /* or fixed, depending on your layout needs */
+    bottom: 20px;  /* Adjust for spacing from the bottom */
+    left: 20px;   /* Positions it on the left side */
+    width: 260px;
+    height: 910px;
+    border-radius: 30px;
+    background: #212121;
+    box-shadow: 0px 0px 30px #1E3A8A,
+                0px 0px 30px #212121;
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+.Side_card_button_container {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+    position: absolute;
+    bottom: 20px; /* Stick to bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Ensure full width alignment */
+    text-align: center; /* Center buttons */
+}
+
+
+.boton-elegante.Side_card {
+    width: 220px; /* Makes both buttons the same width */
+    height: 45px; /* Makes both buttons the same width */
+    padding: 10px; /* Add padding for better appearance */
+    font-size: 16px; /* Ensure text size is consistent */
+}
+
+
+/* ###################### MAIN CARD ######################  */
+.card {
+    position: absolute;
+    bottom: 20px;  /* Adjust for spacing from the bottom */
+    right: 20px;   /* Adjust for spacing from the right */
+    width: 1600px;
+    height: 910px;
+    border-radius: 30px;
+    background: #212121;
+    box-shadow: 0px 0px 30px #1E3A8A,
+                0px 0px 30px #212121;
+    display: flex;
+    flex-direction: column; /* Stack the header and row container vertically */
+    padding: 20px; /* Add padding to avoid elements touching the edges */
+    box-sizing: border-box; /* Ensure padding doesn't increase the size */
+}
+
+.card-header {
+    flex: 0 0 auto; /* Don't let the header grow or shrink */
+    margin-bottom: 20px; /* Add some space between the header and the rows */
+    display: flex; /* Use flexbox to align the header columns */
+    align-items: center; /* Center the text vertically */
+    padding: 0 20px; /* Match the padding of the row-card */
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.05); /* Subtle background to distinguish the header */
+    border-radius: 10px; /* Rounded corners for the header */
+    backdrop-filter: blur(3px); /* Slight blur effect for the header */
+    -webkit-backdrop-filter: blur(3px); /* For Safari compatibility */
+}
+
+.header-column {
+    flex: 0 0 150px; /* Match the width of the Date column */
+    color: #E0E0E0; /* White text to match the theme */
+    font-size: 18px; /* Slightly larger for emphasis */
+    font-weight: bold; /* Make the header text bold */
+    margin-right: 20px; /* Match the gap between columns */
+    display: flex;
+    align-items: center; /* Center the text vertically */
+}
+
+.header-column:nth-child(2),
+.header-column:nth-child(3),
+.header-column:nth-child(4) {
+    flex: 0 0 250px; /* Match the width of the From, Subject, and Message columns */
+}
+
+.header-column:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more opaque line than the rows */
+    padding-right: 20px; /* Match the padding of the row columns */
+}
+
+.header-column:last-child {
+    flex: 1; /* Match the Message column's flex behavior */
+}
+
+.row-container {
+    display: flex;
+    flex-direction: column; /* Stack the rows vertically */
+    gap: 10px; /* Space between the rows */
+    flex: 1; /* Allow the row container to take up remaining space */
+    justify-content: flex-start; /* Align rows at the top of the row-container */
+    margin-top: 20px; /* Add a slight margin to push the rows down a bit from the header */
+    margin-bottom: 10px; /* Reduced to move buttons up */
+}
+
+.row-card {
+    width: 100%; /* Full width of the parent card */
+    height: 80px; /* Adjust height for each row */
+    background: #0D0D0D; /* Slightly transparent white background */
+    border-radius: 15px; /* Rounded corners for the smaller cards */
+    backdrop-filter: blur(5px); /* White blur effect behind the card */
+    -webkit-backdrop-filter: blur(5px); /* For Safari compatibility */
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Subtle white shadow for depth */
+    display: flex; /* Use flexbox to create columns */
+    align-items: center; /* Center the content vertically */
+    padding: 0 20px; /* Add padding to the sides */
+    box-sizing: border-box;
+}
+
+.column {
+    flex: 0 0 150px; /* Fixed width for the Date column */
+    color: #ffffff; /* White text to match the theme */
+    font-size: 16px; /* Adjust as needed */
+    margin-right: 20px; /* Space between columns */
+    display: flex;
+    align-items: center; /* Center the text vertically */
+}
+
+.column:nth-child(2),
+.column:nth-child(3),
+.column:nth-child(4) {
+    flex: 0 0 200px; /* Slightly wider for From, Subject, and Message */
+}
+
+.column:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.2); /* Vertical line between columns */
+    padding-right: 20px; /* Add padding to the right of the line */
+}
+
+.column:last-child {
+    flex: 1; /* Let the Message column take up the remaining space */
+}
+
+/* Remove the old card-header h2 styles since they're no longer used */
+.card-header h2,
+.card-header h2::before,
+.card-header h2::after,
+.card-header h2 span {
+    display: none; /* Hide the old h2 styles */
+}
+
+/* Style for the button container */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* Push buttons to the far left and right */
+    padding: 10px 20px 0 20px; /* Keep top padding, no bottom padding */
+    box-sizing: border-box;
+    margin-bottom: 10px; /* Keep 10px space to the bottom of the card */
+    margin-top: 0; /* Remove margin-top to move buttons up */
+}
+
+.boton-elegante {
+    padding: 15px 30px;
+    border: 2px solid #2c2c2c;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.boton-elegante::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.boton-elegante:hover::after {
+    transform: scale(4);
+}
+
+.boton-elegante:hover {
+    border-color: #666666;
+    background: #292929;
+}
+
+
+/* ###################################################  */
+form[action="/inbox"] {
+    margin-right: 10px; /* Adds 10px space to the right of each form */
+}
+
+/* Ensure the last form doesn’t have extra margin on the right */
+form[action="/inbox"]:last-child {
+    margin-right: 0;
+}
+
+button {
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff80;
+    text-shadow: none;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: transparent;
+    border: 1px solid #ffffff80;
+    transition: 0.5s ease;
+    user-select: none;
+  }
+
+  #scan_button:hover,
+  :focus {
+    color: #ffffff;
+    background: #2563EB;
+    border: 1px solid #2563EB;
+    box-shadow: 0 0 5px #2563EB, 0 0 20px #2563EB, 0 0 10px #2563EB,
+      0 0 50px #2563EB;
+  }
+
+  #open_email_button {
+    width: 80px;
+    text-align: center; /* Centers text horizontally */
+    line-height: normal; /* Reset any inherited line-height */
+    display: inline-block; /* Ensures the button respects its padding and width */
+    padding: 10px 20px; /* Keep your existing padding */
+    padding-left: 15px;
+    height: 40px; /* Set a fixed height to control vertical centering */
+    line-height: 20px; /* Adjust to vertically center the text (height - padding) */
+}
+
+  #open_email_button:hover,
+  :focus {
+    color: #ffffff;
+    background: #2563EB;
+    border: 1px solid #2563EB;
+    box-shadow: 0 0 5px #2563EB, 0 0 20px #2563EB, 0 0 10px #2563EB,
+      0 0 50px #2563EB;
+  }
+  
