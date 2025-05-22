@@ -29,7 +29,29 @@ Welcome to my project! This web-based application safeguards your Gmail inbox fr
 - Secure Session Management: Uses Flask sessions with HTTPS and secure cookie settings.
 
 
+## How It Works
 
+Login: Users log in to their Gmail account using an app-specific password.
+
+Inbox View: Emails are fetched via IMAP and displayed in a paginated interface, showing sender, subject, date, and a content preview.
+
+### Email Analysis:
+
+View Email: Open an email to see its full content.
+
+Scan Email: Triggers a multi-layered analysis:
+
+Text Analysis: The BERT model evaluates the email body for phishing indicators.
+
+Domain Check: VirusTotal scans the sender’s domain for malicious reputation.
+
+URL Check: VirusTotal scans URLs in the email for potential threats.
+
+Classification: Combines results to classify the email as SAFE, SUSPICIOUS, or PHISHING.
+
+Automatic Spam Management: Non-safe emails are moved to the Gmail spam folder.
+
+Real-Time Updates: The app checks for new emails every 10 seconds via SSE.
 
 
 
