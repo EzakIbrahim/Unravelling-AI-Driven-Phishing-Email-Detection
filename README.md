@@ -85,15 +85,42 @@ VirusTotal provides a robust reputation system by aggregating results from dozen
 
 # Setup Instructions
 
-## Clone the Repository:
+## **Clone the Repository**:
 `git clone https://github.com/your-username/email-phishing-detection.git`
 
 `cd email-phishing-detection`
 
-## Install Dependencies: Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
+##** Install Dependencies**: Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
 `python -m venv venv`
 
 `source venv/bin/activate  # On Windows: venv\Scripts\activate`
 
 `pip install flask email-validator requests torch transformers`
+
+## Set Up VirusTotal API Keys:
+
+- Sign up for a VirusTotal account and obtain API keys at VirusTotal.
+
+- Update the API_KEYS list in app.py:
+
+`API_KEYS = ["your_api_key_1", "your_api_key_2"]`
+
+## Set Up SSL Certificates:
+- Install mkcert from mkcert GitHub. 
+
+- Generate SSL certificates for local development:
+`mkcert 127.0.0.1`
+
+
+
+
+
+
+
+
+
+
+
+
+
 
