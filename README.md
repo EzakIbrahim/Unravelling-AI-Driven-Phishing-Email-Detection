@@ -110,7 +110,15 @@ VirusTotal provides a robust reputation system by aggregating results from dozen
 - Install mkcert from mkcert GitHub. 
 
 - Generate SSL certificates for local development:
+  
 `mkcert 127.0.0.1`
+
+- Ensure 127.0.0.1+2.pem and 127.0.0.1+2-key.pem are in the project root.
+
+## Verify Phishing Model:
+-The BERT model is stored in the phishing_model directory.
+
+-Ensure model files are present or update model_path in app.py if hosted elsewhere.
 
 
 
