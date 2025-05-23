@@ -85,12 +85,15 @@ VirusTotal provides a robust reputation system by aggregating results from dozen
 
 # Setup Instructions
 
-Clone the Repository:
-`git clone https://github.com/your-username/email-phishing-detection.git
-cd email-phishing-detection`
+## Clone the Repository:
+`git clone https://github.com/your-username/email-phishing-detection.git`
 
-Install Dependencies: Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
-`python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install flask email-validator requests torch transformers`
+`cd email-phishing-detection`
+
+## Install Dependencies: Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
+`python -m venv venv`
+
+`source venv/bin/activate  # On Windows: venv\Scripts\activate`
+
+`pip install flask email-validator requests torch transformers`
 
