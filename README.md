@@ -79,18 +79,18 @@ The project uses the VirusTotal API to enhance phishing detection without requir
 
 **Result Aggregation**: Combines VirusTotal’s results with the BERT model’s text analysis for a comprehensive classification.
 
+## Why No Need for a Reputation System
 
+VirusTotal provides a robust reputation system by aggregating results from dozens of antivirus engines and threat intelligence sources. Building a custom reputation system would be redundant and resource-intensive, requiring maintenance of a database of malicious domains and URLs. By using VirusTotal, the project benefits from up-to-date threat intelligence, allowing it to focus on email fetching, BERT-based content analysis, and user experience.
 
+# Setup Instructions
 
+Clone the Repository:
+`git clone https://github.com/your-username/email-phishing-detection.git
+cd email-phishing-detection`
 
-
-
-
-
-
-
-
-
-
-
+Install Dependencies: Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
+`python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install flask email-validator requests torch transformers`
 
