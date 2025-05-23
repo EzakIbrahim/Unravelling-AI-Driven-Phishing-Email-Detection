@@ -90,7 +90,7 @@ VirusTotal provides a robust reputation system by aggregating results from dozen
 
 `cd email-phishing-detection`
 
-##** Install Dependencies**: Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
+## ** Install Dependencies**: Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
 `python -m venv venv`
 
 `source venv/bin/activate  # On Windows: venv\Scripts\activate`
