@@ -55,9 +55,19 @@ Automatic Spam Management: Non-safe emails are moved to the Gmail spam folder.
 
 Real-Time Updates: The app checks for new emails every 10 seconds via SSE.
 
+## BERT Model Details
 
+The core of the phishing detection system is a BERT (Bidirectional Encoder Representations from Transformers) deep learning model, personally trained by the project creator. Key details:
 
+**Model Type**: BERT-based model fine-tuned for phishing email detection.
 
+**Training**: Trained on a dataset of labeled phishing and non-phishing emails, achieving an accuracy of 87.1% on the test set.
+
+**Functionality**: Analyzes the email body (cleaned of URLs and special characters) to detect phishing patterns using bidirectional context understanding.
+
+**Implementation**: Uses Hugging Face’s AutoTokenizer and AutoModelForSequenceClassification for tokenization and classification, with a confidence threshold of 0.2 for phishing detection.
+
+**Integration**: Combines BERT’s phishing probability with VirusTotal’s domain and URL scan results for accurate classification.
 
 
 
