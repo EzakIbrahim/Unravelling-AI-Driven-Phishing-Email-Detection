@@ -69,6 +69,16 @@ The core of the phishing detection system is a BERT (Bidirectional Encoder Repre
 
 **Integration**: Combines BERT’s phishing probability with VirusTotal’s domain and URL scan results for accurate classification.
 
+## VirusTotal Integration
+
+The project uses the VirusTotal API to enhance phishing detection without requiring a custom reputation system. VirusTotal aggregates threat intelligence from multiple antivirus engines and security vendors to:
+
+**Scan Sender Domains**: Extracts the domain from the sender’s email (e.g., `@example.com`) and checks its reputation using VirusTotal’s `/domains` endpoint, excluding Gridinsoft for adjusted malicious counts.
+
+**Scan URLs**: Identifies URLs in the email body and scans them using VirusTotal’s `/urls` and `/analyses` endpoints to detect malicious or suspicious links.
+
+**Result Aggregation**: Combines VirusTotal’s results with the BERT model’s text analysis for a comprehensive classification.
+
 
 
 
