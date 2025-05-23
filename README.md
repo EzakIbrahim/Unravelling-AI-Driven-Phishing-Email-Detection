@@ -92,6 +92,7 @@ VirusTotal provides a robust reputation system by aggregating results from dozen
 
 ## Install Dependencies: 
 - Ensure Python 3.8+ is installed, then set up a virtual environment and install requirements:
+  
 `python -m venv venv`
 
 `source venv/bin/activate  # On Windows: venv\Scripts\activate`
@@ -116,12 +117,23 @@ VirusTotal provides a robust reputation system by aggregating results from dozen
 - Ensure 127.0.0.1+2.pem and 127.0.0.1+2-key.pem are in the project root.
 
 ## Verify Phishing Model:
--The BERT model is stored in the phishing_model directory.
+- The BERT model is stored in the phishing_model directory.
 
--Ensure model files are present or update model_path in app.py if hosted elsewhere.
+- Ensure model files are present or update model_path in app.py if hosted elsewhere.
 
+## Run the Application:
 
+- python app.py
 
+- Access the app at https://127.0.0.1:5000 in your browser.
+
+## Gmail App Password:
+
+- Enable 2-Step Verification in your Google Account settings.
+
+- Generate an app-specific password at Google Account.
+
+- Use this password when logging in.
 
 
 
